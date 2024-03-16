@@ -16,8 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='API Documentation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('asset_tracking.urls')),
+    path('swagger/', schema_view),
+    # path('schema/', schema_view),
+    # Django Rest Swagger for API documentation:
+    # path('swagger/', get_swagger_view(title='API Documentation')),
 ]
